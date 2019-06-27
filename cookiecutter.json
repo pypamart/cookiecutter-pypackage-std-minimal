@@ -1,0 +1,4 @@
+{
+    "repository_name": "package_name[-subpackage_name]",
+    "package_name": "{{ cookiecutter.repository_name.lower().replace(' ', '_').replace('-', '_').replace('[', '').replace(']', '') }}"
+}
