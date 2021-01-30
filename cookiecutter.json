@@ -1,5 +1,8 @@
 {
+    "full_name": "Pierre-Yves PAMART",
     "repository_name": "package_name[-subpackage_name]",
     "package_name": "{{ cookiecutter.repository_name.lower().replace(' ', '_').replace('-', '_').replace('[', '').replace(']', '') }}",
-    "is_executable_package": ["Yes", "No"]
+    "is_executable_package": ["Yes", "No"],
+    "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
+    "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"]
 }

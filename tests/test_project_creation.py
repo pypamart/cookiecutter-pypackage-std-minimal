@@ -68,6 +68,9 @@ def configure_context_package_name(context_package_name, context_dict):
 def configure_context_package_executability(is_executable_package, context_dict):
     context_dict["is_executable_package"] = is_executable_package
 
+@when("I choose the license <license_type>")
+def configure_license(license_type, context_dict):
+    context_dict["open_source_license"] = license_type
 
 @when("I generate my project structure with this extra context")
 def bake_with_extra_context(dirpaths, context_dict):
@@ -151,3 +154,32 @@ def check_readme_file(real_repository_name):
 @then("The repository has a Python compliant .gitignore file")
 def check_gitignore_file(real_repository_name):
     check_if_file(real_repository_name, ".gitignore")
+
+
+@then("The license file correspond to <license_type>")
+def check_license_file(real_repository_name, license_type):
+    check_if_file(
+        real_repository_name, 
+        "LICENSE", 
+        is_exists=license_type != "Not open source")
+    
+    if license_type != "Not open source":
+        license_fisrt_line = {
+            "MIT license": "MIT License\n", 
+            "BSD license": "BSD License\n", 
+            "ISC license": "ISC License\n", 
+            "Apache Software License 2.0": "Apache Software License 2.0\n", 
+            "GNU General Public License v3": "GNU GENERAL PUBLIC LICENSE\n" 
+        }
+
+        check_file_fisrt_line(real_repository_name, "LICENSE", license_fisrt_line[license_type])
+
+def check_file_fisrt_line(real_repository_name: pytest.fixture, relative_file_path: str, theoretical_first_line: str):
+    project_basepath = Path(".")
+    path_name = real_repository_name + "/" + relative_file_path
+
+    with project_basepath.joinpath(path_name).open() as license_file:
+        fisrt_line = license_file.readline()
+        assert fisrt_line == theoretical_first_line
+
+

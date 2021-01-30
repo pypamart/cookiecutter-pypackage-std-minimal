@@ -17,4 +17,6 @@ if __name__ == '__main__':
     if '{{ cookiecutter.is_executable_package }}' == 'No':
         Path('./{{ cookiecutter.package_name }}/__main__.py').unlink()
         
+    if '{{ cookiecutter.open_source_license }}' == 'Not open source':
+        Path('./LICENSE').unlink()
 
