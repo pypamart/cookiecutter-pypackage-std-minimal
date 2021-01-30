@@ -16,7 +16,7 @@ Feature: Project creation
     And The tests subdirectory is named tests
     And The scripts subdirectory is named scripts
     And The repository has an README.rst file
-
+    And The repository has a Python compliant .gitignore file
 
     Examples:
       | context_repository_name        | context_package_name | real_repository_name           | real_package_name            | is_executable_package |

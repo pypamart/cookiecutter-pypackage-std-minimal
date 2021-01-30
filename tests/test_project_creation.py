@@ -140,3 +140,7 @@ def check_package_main_file(real_repository_name, real_package_name, is_executab
 @then("The repository has an README.rst file")
 def check_readme_file(real_repository_name):
     check_if_file(real_repository_name, "README.rst")
+
+@then("The repository has a Python compliant .gitignore file")
+def check_gitignore_file(real_repository_name):
+    check_if_file(real_repository_name, ".gitignore")
