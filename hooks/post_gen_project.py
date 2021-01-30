@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 def remove_gitkeep_files(): 
     """
     Remove .gitkeep files that serve to archive empty folders with git.
@@ -9,4 +10,11 @@ def remove_gitkeep_files():
     for path in gitkeep_files:
         path.unlink()
 
-remove_gitkeep_files()
+
+if __name__ == '__main__':
+    remove_gitkeep_files()
+
+    if '{{ cookiecutter.is_executable_package }}' == 'No':
+        Path('./{{ cookiecutter.package_name }}/__main__.py').unlink()
+        
+
