@@ -115,6 +115,11 @@ def check_tests_directory(real_repository_name):
     check_if_directory(real_repository_name, "tests")
 
 
+@then("The tests resources subdirectory is named resources")
+def check_tests_resources_directory(real_repository_name):
+    check_if_directory(real_repository_name, "tests/resources")
+
+
 @then("The package subdirectory contains an empty subdirectory named resources")
 def check_package_resources_directory(real_repository_name, real_package_name):
     check_if_directory(real_repository_name, real_package_name + "/resources")
@@ -137,9 +142,11 @@ def check_package_main_file(real_repository_name, real_package_name, is_executab
         real_package_name + "/__main__.py",
         is_exists=is_executable_package == "Yes")
 
+
 @then("The repository has an README.rst file")
 def check_readme_file(real_repository_name):
     check_if_file(real_repository_name, "README.rst")
+
 
 @then("The repository has a Python compliant .gitignore file")
 def check_gitignore_file(real_repository_name):

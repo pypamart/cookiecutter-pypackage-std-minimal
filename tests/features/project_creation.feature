@@ -14,6 +14,7 @@ Feature: Project creation
     And The package subdirectory contains __main__.py file = <is_executable_package>
     And The documentation subdirectory is named docs
     And The tests subdirectory is named tests
+    And The tests resources subdirectory is named resources
     And The scripts subdirectory is named scripts
     And The repository has an README.rst file
     And The repository has a Python compliant .gitignore file
